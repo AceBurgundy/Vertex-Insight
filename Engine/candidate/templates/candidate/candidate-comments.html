@@ -1,0 +1,34 @@
+<div id="candidate-comments">
+
+    {% include 'comment.html' %}
+
+    <div id="candidate-comments-list">
+        {% if candidate.comments %}
+            {% for comment in candidate.comments %}
+                <div class="comment" id="{{ comment.id }}">
+                    <div class="comment__top">
+
+                        {% if comment.user_email %}
+                            <div class="comment__top__email">
+                                {{ comment.user_email}}
+                            </div>
+                        {% endif %}
+
+                        {% if comment.username %}
+                            <div class="comment__top__username">
+                                {{ comment.username }}
+                            </div>
+                        {% endif %}
+
+                        <p class="comment__top__datetime">{{ comment.date_time_posted.strftime('%B, %d %Y %I:%M %p') }}</p>
+
+                    </div>
+                    <p class="comment__text">{{ comment.text }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No comments available.</p>
+        {% endif %}
+    </div>
+
+</div>

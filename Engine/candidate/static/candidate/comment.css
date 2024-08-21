@@ -1,0 +1,47 @@
+#comment-form {
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 1rem;
+}
+
+#comment-form-top {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5rem;
+}
+
+.comment-form__field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.comment-form__field > label {
+    font-size: 0.8rem;
+}
+
+.comment-form__field > input,
+.comment-form__field > textarea {
+    background-color: var(--Input);
+    border: none;
+    padding: 1rem;
+    font-size: 1rem;
+}
+
+
+@media screen and (orientation: portrait) {
+    #comment-form {
+        position: sticky;
+        top: 0;
+        background-color: var(--Background);
+    }
+
+    .comment-form__field > input,
+    .comment-form__field > textarea {
+        padding: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+}

@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+
+{% block component_style -%}
+{% endblock component_style %}
+
+{% block component_script -%}
+<script src="{{ url_for( 'index.static' , filename='index.js') }}" type="module"></script>
+{%- endblock component_script %}
+
+<!-- {# main #} -->
+{% block candidates -%}
+<div id="title">{{ title }}</div>
+<section id="possible-winner">
+    Highest Rated Candidate
+    <div id="possible-winner-name"></div>
+    <p>With <span id="possible-winner-rating-positive"></span> positive ratings</p>
+</section>
+<section id="candidates"></section>
+{%- endblock candidates %}

@@ -1,0 +1,26 @@
+<form id="comment-form" data-action="{{ url_for('candidate.comment') }}" >
+    <div id="comment-form-top">
+        <p>Comment</p>
+    </div>
+
+    {{ comment_form.hidden_tag() }}
+
+    <div class="comment-form__field">
+        {{ comment_form.email.label }}
+        {{ comment_form.email(placeholder="Email") }}
+    </div>
+
+    <div class="comment-form__field">
+        {{ comment_form.username.label }}
+        {{ comment_form.username(placeholder="Username (not required)") }}
+    </div>
+
+    <div class="comment-form__field">
+        {{ comment_form.text.label }}
+        {{ comment_form.text(placeholder="Add your comment") }}
+    </div>
+
+    <button class="button-primary" id="comment-form-submit" type="submit">
+        Comment
+    </button>
+</form>

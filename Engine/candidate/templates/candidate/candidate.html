@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block component_style -%}
+<link rel="stylesheet" href="{{ url_for( 'candidate.static' , filename='comment.css') }}">
+<link rel="stylesheet" href="{{ url_for( 'candidate.static' , filename='candidate.css') }}">
+<link rel="stylesheet" href="{{ url_for( 'candidate.static' , filename='candidate-comments.css') }}">
+{% endblock component_style %}
+
+{% block component_script -%}
+<script src="{{ url_for( 'candidate.static' , filename='candidate.js') }}" type="module"></script>
+<script src="{{ url_for( 'candidate.static' , filename='comment.js') }}" type="module"></script>
+{%- endblock component_script %}
+
+<!-- {# main #} -->
+{% block candidates -%}
+<section id="candidate" data-candidate-id="{{ candidate.id }}">
+
+  <div id="candidate-data">
+    <img id="candidate-data-image" src="{{ url_for( 'static', filename='candidate_pictures/' + candidate.image) }}" alt="{{ candidate.name }}">
+    <p id="candidate-data-name">{{ candidate.name }}</p>
+    <p id="candidate-data-text">{{ candidate.content }}</p>
+    <div id="candidate-data-rating">
+      <div class="candidate-data-rating-child positive">
+        <div class="candidate-data-rating-value">{{ candidate.get_rating().POSITIVE }}</div>
+        <div class="candidate-data-rating-name">Positive</div>
+      </div>
+      <div class="candidate-data-rating-child negative">
+        <div class="candidate-data-rating-value">{{ candidate.get_rating().NEGATIVE }}</div>
+        <div class="candidate-data-rating-name">Negative</div>
+      </div>
+      <div class="candidate-data-rating-child neutral">
+        <div class="candidate-data-rating-value">{{ candidate.get_rating().NEUTRAL }}</div>
+        <div class="candidate-data-rating-name">Neutral</div>
+      </div>
+    </div>
+  </div>
+
+  {% include 'candidate-comments.html' %}
+
+</section>
+{%- endblock candidates %}

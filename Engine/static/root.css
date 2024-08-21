@@ -1,0 +1,55 @@
+@import url('./fonts.css');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montsserat Regular';
+}
+
+:root {
+    --Text: #130e01;
+    --Background: #fffaeb;
+    --Input: #e6e1d2;
+    --Primary: #ff8400;
+    --Secondary: #fff5d6;
+    --Accent: #cf4307;
+}
+
+body {
+    background-color: var(--Background);
+}
+
+.button-primary, .toast {
+    background-color: var(--Primary);
+    text-transform: uppercase;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    color: var(--Text);
+    cursor: pointer;
+    border: none;
+}
+
+.button-primary:hover {
+    background-color: var(--Accent);
+    color: white;
+}
+
+#toasts {
+    position: fixed;
+    bottom: 0%;
+    left: 0%;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    list-style: none;
+}
+
+.toast {
+    font-family: 'Montsserat Regular';
+    font-weight: normal;
+    text-transform: capitalize;
+}
