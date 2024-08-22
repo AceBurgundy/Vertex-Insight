@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+
+{% block component_style -%}
+{% endblock component_style %}
+
+{% block component_script -%}
+<script src="{{ url_for( 'election.static' , filename='election.js') }}" type="module"></script>
+{%- endblock component_script %}
+
+<!-- {# main #} -->
+{% block main -%}
+<div>
+  <h2>{{ election.title }}</h2>
+  <p>
+      {{ election.start_time | start_time_prefix_text }}: <span>{{ election.datetime_readable(election.start_time) }}</span>
+      {{ election.end_time | end_time_prefix_text }}: <span>{{ election.datetime_readable(election.end_time) }}</span>
+  </p>
+</div>
+<section id="candidates">
+    {% for candidate in candidates -%}
+        <div>
+          <img src="{{ candidate.image_filename }}" alt="{{ candidate.name }}">
+          <h2>{{ candidate.name }}</h2>
+          <p>Votes: <span data-candidate-name="{{ candidate.name }}">{{ candidate.voters | length }}</span></p>
+        </div>
+    {%- endfor %}
+</section>
+{%- endblock main %}

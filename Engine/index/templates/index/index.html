@@ -8,12 +8,17 @@
 {%- endblock component_script %}
 
 <!-- {# main #} -->
-{% block candidates -%}
-<div id="title">{{ title }}</div>
-<section id="possible-winner">
-    Highest Rated Candidate
-    <div id="possible-winner-name"></div>
-    <p>With <span id="possible-winner-rating-positive"></span> positive ratings</p>
+{% block main -%}
+<div id="title">{{ Vertex Insight }}</div>
+<section id="elections">
+    {% for election in elections -%}
+        <a href="{{ url_for('election.candidates', title=election.title ) }}">
+            <h2>{{ election.title }}</h2>
+            <p>
+                {{ election.start_time|start_time_prefix_text }}: <span>{{ election.datetime_readable(election.start_time) }}</span>
+                {{ election.end_time|end_time_prefix_text }}: <span>{{ election.datetime_readable(election.end_time) }}</span>
+            </p>
+        </a>
+    {%- endfor %}
 </section>
-<section id="candidates"></section>
-{%- endblock candidates %}
+{%- endblock main %}

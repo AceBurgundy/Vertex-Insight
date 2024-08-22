@@ -12,6 +12,8 @@ class Voter(BaseModel):
         last_name: The last name of the voter.
         suffix: The optional suffix for the voter (e.g., "Jr.", "Sr.").
         id_number: An optional identifier for the voter.
+        course_id: The optional foreign key referencing the Course.
+        course: A relationship to retrieve the parent Course.
         organization_id: The optional foreign key referencing the Organization.
         organization: A relationship to retrieve the parent Organization.
     """
@@ -23,11 +25,11 @@ class Voter(BaseModel):
     suffix = Column(String(255), nullable=True)
     id_number = Column(String(255), unique=True, nullable=True)
 
+    course_id = Column(Integer, ForeignKey('courses.id'), nullable=True)
     organization_id = Column(Integer, ForeignKey('organizations.id'), nullable=True)
 
-    # Adding relationship to get the parent Organization from Voter
-    organization = relationship(
-        'Organization', backref=backref('voters', lazy=True))
+    course = relationship('Course')
+    organization = relationship('Organization')
 
     def get_name(self) -> str:
         """

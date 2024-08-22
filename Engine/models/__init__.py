@@ -8,6 +8,8 @@ Models:
 - Organization
 - Voter
 - Vote
+- Admin
+- Course
 """
 
 from .Election import Election
@@ -15,7 +17,9 @@ from .Position import Position
 from .Candidate import Candidate
 from .Organization import Organization
 from .Voter import Voter
+from .Course import Course
 from .Vote import Vote
+from .Admin import Admin
 
 __all__ = [
     'Election',
@@ -23,5 +27,7 @@ __all__ = [
     'Candidate',
     'Organization',
     'Voter',
-    'Vote'
+    'Vote',
+    'Admin',
+    'Course'
 ]
